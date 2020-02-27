@@ -20,6 +20,7 @@ class Tmux < Formula
   end
 
   depends_on "pkg-config" => :build
+  depends_on "utf8proc" => :build
   depends_on "libevent"
   depends_on "ncurses"
 
@@ -32,7 +33,8 @@ class Tmux < Formula
     system "sh", "autogen.sh" if build.head?
 
     args = %W[
-      --disable-Dependency-tracking
+      --enable-utf8proc
+      --disable-dependency-tracking
       --prefix=#{prefix}
       --sysconfdir=#{etc}
     ]
